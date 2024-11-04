@@ -1,0 +1,24 @@
+[0.281s] Invoking command in '/home/ppc/src/ppc': PYTHONPATH=/home/ppc/build/ppc/prefix_override:/home/ppc/install/ppc/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ppc build --build-base /home/ppc/build/ppc/build install --record /home/ppc/build/ppc/install.log --install-scripts $base/lib/ppc --single-version-externally-managed
+[0.359s] running egg_info
+[0.360s] writing ../../build/ppc/ppc.egg-info/PKG-INFO
+[0.360s] writing dependency_links to ../../build/ppc/ppc.egg-info/dependency_links.txt
+[0.360s] writing entry points to ../../build/ppc/ppc.egg-info/entry_points.txt
+[0.360s] writing requirements to ../../build/ppc/ppc.egg-info/requires.txt
+[0.360s] writing top-level names to ../../build/ppc/ppc.egg-info/top_level.txt
+[0.376s] reading manifest file '../../build/ppc/ppc.egg-info/SOURCES.txt'
+[0.376s] writing manifest file '../../build/ppc/ppc.egg-info/SOURCES.txt'
+[0.376s] running build
+[0.376s] running build_py
+[0.376s] copying ppc/simple_sub.py -> /home/ppc/build/ppc/build/lib/ppc
+[0.376s] running install
+[0.377s] running install_lib
+[0.377s] copying /home/ppc/build/ppc/build/lib/ppc/simple_sub.py -> /home/ppc/install/ppc/lib/python3.8/site-packages/ppc
+[0.377s] byte-compiling /home/ppc/install/ppc/lib/python3.8/site-packages/ppc/simple_sub.py to simple_sub.cpython-38.pyc
+[0.378s] running install_data
+[0.378s] running install_egg_info
+[0.379s] removing '/home/ppc/install/ppc/lib/python3.8/site-packages/ppc-0.0.0-py3.8.egg-info' (and everything under it)
+[0.379s] Copying ../../build/ppc/ppc.egg-info to /home/ppc/install/ppc/lib/python3.8/site-packages/ppc-0.0.0-py3.8.egg-info
+[0.379s] running install_scripts
+[0.388s] Installing simple_sub script to /home/ppc/install/ppc/lib/ppc
+[0.388s] writing list of installed files to '/home/ppc/build/ppc/install.log'
+[0.398s] Invoked command in '/home/ppc/src/ppc' returned '0': PYTHONPATH=/home/ppc/build/ppc/prefix_override:/home/ppc/install/ppc/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ppc build --build-base /home/ppc/build/ppc/build install --record /home/ppc/build/ppc/install.log --install-scripts $base/lib/ppc --single-version-externally-managed

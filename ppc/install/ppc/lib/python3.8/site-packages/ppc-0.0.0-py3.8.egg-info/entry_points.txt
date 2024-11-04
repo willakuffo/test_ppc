@@ -1,0 +1,3 @@
+[console_scripts]
+simple_sub = ppc.simple_sub:main
+

@@ -1,0 +1,25 @@
+running egg_info
+writing ../../build/ppc/ppc.egg-info/PKG-INFO
+writing dependency_links to ../../build/ppc/ppc.egg-info/dependency_links.txt
+writing entry points to ../../build/ppc/ppc.egg-info/entry_points.txt
+writing requirements to ../../build/ppc/ppc.egg-info/requires.txt
+writing top-level names to ../../build/ppc/ppc.egg-info/top_level.txt
+reading manifest file '../../build/ppc/ppc.egg-info/SOURCES.txt'
+writing manifest file '../../build/ppc/ppc.egg-info/SOURCES.txt'
+running build
+running build_py
+copying ppc/simple_sub.py -> /home/ppc/build/ppc/build/lib/ppc
+copying ppc/__init__.py -> /home/ppc/build/ppc/build/lib/ppc
+running install
+running install_lib
+copying /home/ppc/build/ppc/build/lib/ppc/simple_sub.py -> /home/ppc/install/ppc/lib/python3.8/site-packages/ppc
+copying /home/ppc/build/ppc/build/lib/ppc/__init__.py -> /home/ppc/install/ppc/lib/python3.8/site-packages/ppc
+byte-compiling /home/ppc/install/ppc/lib/python3.8/site-packages/ppc/simple_sub.py to simple_sub.cpython-38.pyc
+byte-compiling /home/ppc/install/ppc/lib/python3.8/site-packages/ppc/__init__.py to __init__.cpython-38.pyc
+running install_data
+running install_egg_info
+removing '/home/ppc/install/ppc/lib/python3.8/site-packages/ppc-0.0.0-py3.8.egg-info' (and everything under it)
+Copying ../../build/ppc/ppc.egg-info to /home/ppc/install/ppc/lib/python3.8/site-packages/ppc-0.0.0-py3.8.egg-info
+running install_scripts
+Installing simple_sub script to /home/ppc/install/ppc/lib/ppc
+writing list of installed files to '/home/ppc/build/ppc/install.log'

@@ -14,7 +14,7 @@ class SimpleSub(Node):
 
 
     def imu_callback(self,msg):
-        self.get_logger().info(msg)
+        self.get_logger().info(f'IMU: {msg.linear_acceleration.x}')
 
 
 def main(args = None):

@@ -2,9 +2,15 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Imu, JointState, LaserScan
 
+from .naive_state_estimator import NaiveStateEstimator
+
 class SimpleSub(Node):
     def __init__(self):
         super().__init__('simple_sub')
+
+
+        #naive estimator
+        self.nse = NaiveStateEstimator()
 
         #create sensor data structs
 
@@ -21,8 +27,9 @@ class SimpleSub(Node):
         self.lidar = {}
 
 
-
-
+        #create timer callback to run general processig of sensor data
+        self.create_timer(timer_period_sec=0.03,
+                      callback= self.pushToProcess)
 
         #create sensor subscribers
         self.imu_subscriber = self.create_subscription(
@@ -52,6 +59,21 @@ class SimpleSub(Node):
         )
 
 
+    def pushToProcess(self):
+        self.nse.imu = self.imu
+        self.nse.lidar = self.lidar
+        self.nse.encoder = self.encoder
+        print(self.imu.keys())
+
+        if len(self.imu.keys())>1: self.nse.velocity_from_imu()
+        self.get_logger().info(f'velocity from imu: {self.nse.vx_k_imu}')
+
+
+
+
+
+    
+
     def imu_callback(self,msg):
         self.imu = {
             'orientation':{
@@ -78,7 +100,7 @@ class SimpleSub(Node):
         self.encoder['left_encoder']['position'] = msg.position
         self.encoder['left_encoder']['velocity'] = msg.velocity
         self.encoder['left_encoder']['effort'] = msg.effort
-
+        #self.get_logger().info(f'enc: {msg.velocity}')
 
     def right_encoder_callback(self,msg):
         self.encoder['right_encoder']['position'] = msg.position

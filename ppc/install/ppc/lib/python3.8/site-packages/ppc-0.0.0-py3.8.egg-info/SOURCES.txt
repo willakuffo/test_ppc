@@ -9,6 +9,8 @@ setup.py
 ../../build/ppc/ppc.egg-info/top_level.txt
 ../../build/ppc/ppc.egg-info/zip-safe
 ppc/__init__.py
+ppc/naive_state_estimator.py
+ppc/racecar_params.py
 ppc/simple_sub.py
 resource/ppc
 test/test_copyright.py

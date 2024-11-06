@@ -1,0 +1,24 @@
+[0.267s] Invoking command in '/home/test_ppc/ppc/src/ppc': PYTHONPATH=/home/test_ppc/ppc/build/ppc/prefix_override:/home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ppc build --build-base /home/test_ppc/ppc/build/ppc/build install --record /home/test_ppc/ppc/build/ppc/install.log --install-scripts $base/lib/ppc --single-version-externally-managed
+[0.366s] running egg_info
+[0.366s] writing ../../build/ppc/ppc.egg-info/PKG-INFO
+[0.366s] writing dependency_links to ../../build/ppc/ppc.egg-info/dependency_links.txt
+[0.366s] writing entry points to ../../build/ppc/ppc.egg-info/entry_points.txt
+[0.366s] writing requirements to ../../build/ppc/ppc.egg-info/requires.txt
+[0.366s] writing top-level names to ../../build/ppc/ppc.egg-info/top_level.txt
+[0.381s] reading manifest file '../../build/ppc/ppc.egg-info/SOURCES.txt'
+[0.381s] writing manifest file '../../build/ppc/ppc.egg-info/SOURCES.txt'
+[0.381s] running build
+[0.381s] running build_py
+[0.381s] copying ppc/simple_sub.py -> /home/test_ppc/ppc/build/ppc/build/lib/ppc
+[0.381s] running install
+[0.381s] running install_lib
+[0.382s] copying /home/test_ppc/ppc/build/ppc/build/lib/ppc/simple_sub.py -> /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc
+[0.382s] byte-compiling /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc/simple_sub.py to simple_sub.cpython-38.pyc
+[0.383s] running install_data
+[0.383s] running install_egg_info
+[0.384s] removing '/home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc-0.0.0-py3.8.egg-info' (and everything under it)
+[0.384s] Copying ../../build/ppc/ppc.egg-info to /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc-0.0.0-py3.8.egg-info
+[0.384s] running install_scripts
+[0.392s] Installing simple_sub script to /home/test_ppc/ppc/install/ppc/lib/ppc
+[0.392s] writing list of installed files to '/home/test_ppc/ppc/build/ppc/install.log'
+[0.401s] Invoked command in '/home/test_ppc/ppc/src/ppc' returned '0': PYTHONPATH=/home/test_ppc/ppc/build/ppc/prefix_override:/home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ppc build --build-base /home/test_ppc/ppc/build/ppc/build install --record /home/test_ppc/ppc/build/ppc/install.log --install-scripts $base/lib/ppc --single-version-externally-managed

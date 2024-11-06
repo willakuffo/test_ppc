@@ -1,0 +1,21 @@
+[0.259s] Invoking command in '/home/test_ppc/ppc/src/ppc': PYTHONPATH=/home/test_ppc/ppc/build/ppc/prefix_override:/home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ppc build --build-base /home/test_ppc/ppc/build/ppc/build install --record /home/test_ppc/ppc/build/ppc/install.log --install-scripts $base/lib/ppc --single-version-externally-managed
+[0.341s] running egg_info
+[0.342s] writing ../../build/ppc/ppc.egg-info/PKG-INFO
+[0.342s] writing dependency_links to ../../build/ppc/ppc.egg-info/dependency_links.txt
+[0.342s] writing entry points to ../../build/ppc/ppc.egg-info/entry_points.txt
+[0.342s] writing requirements to ../../build/ppc/ppc.egg-info/requires.txt
+[0.342s] writing top-level names to ../../build/ppc/ppc.egg-info/top_level.txt
+[0.356s] reading manifest file '../../build/ppc/ppc.egg-info/SOURCES.txt'
+[0.357s] writing manifest file '../../build/ppc/ppc.egg-info/SOURCES.txt'
+[0.357s] running build
+[0.357s] running build_py
+[0.357s] running install
+[0.357s] running install_lib
+[0.358s] running install_data
+[0.358s] running install_egg_info
+[0.359s] removing '/home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc-0.0.0-py3.8.egg-info' (and everything under it)
+[0.359s] Copying ../../build/ppc/ppc.egg-info to /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc-0.0.0-py3.8.egg-info
+[0.359s] running install_scripts
+[0.368s] Installing simple_sub script to /home/test_ppc/ppc/install/ppc/lib/ppc
+[0.368s] writing list of installed files to '/home/test_ppc/ppc/build/ppc/install.log'
+[0.378s] Invoked command in '/home/test_ppc/ppc/src/ppc' returned '0': PYTHONPATH=/home/test_ppc/ppc/build/ppc/prefix_override:/home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/ppc build --build-base /home/test_ppc/ppc/build/ppc/build install --record /home/test_ppc/ppc/build/ppc/install.log --install-scripts $base/lib/ppc --single-version-externally-managed

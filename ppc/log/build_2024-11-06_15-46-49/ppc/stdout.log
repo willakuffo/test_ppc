@@ -1,0 +1,28 @@
+running egg_info
+writing ../../build/ppc/ppc.egg-info/PKG-INFO
+writing dependency_links to ../../build/ppc/ppc.egg-info/dependency_links.txt
+writing entry points to ../../build/ppc/ppc.egg-info/entry_points.txt
+writing requirements to ../../build/ppc/ppc.egg-info/requires.txt
+writing top-level names to ../../build/ppc/ppc.egg-info/top_level.txt
+reading manifest file '../../build/ppc/ppc.egg-info/SOURCES.txt'
+writing manifest file '../../build/ppc/ppc.egg-info/SOURCES.txt'
+running build
+running build_py
+copying ppc/racecar_params.py -> /home/test_ppc/ppc/build/ppc/build/lib/ppc
+copying ppc/naive_state_estimator.py -> /home/test_ppc/ppc/build/ppc/build/lib/ppc
+copying ppc/simple_sub.py -> /home/test_ppc/ppc/build/ppc/build/lib/ppc
+running install
+running install_lib
+copying /home/test_ppc/ppc/build/ppc/build/lib/ppc/racecar_params.py -> /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc
+copying /home/test_ppc/ppc/build/ppc/build/lib/ppc/naive_state_estimator.py -> /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc
+copying /home/test_ppc/ppc/build/ppc/build/lib/ppc/simple_sub.py -> /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc
+byte-compiling /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc/racecar_params.py to racecar_params.cpython-38.pyc
+byte-compiling /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc/naive_state_estimator.py to naive_state_estimator.cpython-38.pyc
+byte-compiling /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc/simple_sub.py to simple_sub.cpython-38.pyc
+running install_data
+running install_egg_info
+removing '/home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc-0.0.0-py3.8.egg-info' (and everything under it)
+Copying ../../build/ppc/ppc.egg-info to /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc-0.0.0-py3.8.egg-info
+running install_scripts
+Installing simple_sub script to /home/test_ppc/ppc/install/ppc/lib/ppc
+writing list of installed files to '/home/test_ppc/ppc/build/ppc/install.log'

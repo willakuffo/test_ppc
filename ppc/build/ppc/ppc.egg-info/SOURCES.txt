@@ -12,7 +12,11 @@ ppc/__init__.py
 ppc/naive_state_estimator.py
 ppc/racecar_params.py
 ppc/simple_sub.py
+ppc.egg-info/PKG-INFO
+ppc.egg-info/SOURCES.txt
+ppc.egg-info/dependency_links.txt
+ppc.egg-info/entry_points.txt
+ppc.egg-info/requires.txt
+ppc.egg-info/top_level.txt
+ppc.egg-info/zip-safe
 resource/ppc
-test/test_copyright.py
-test/test_flake8.py
-test/test_pep257.py

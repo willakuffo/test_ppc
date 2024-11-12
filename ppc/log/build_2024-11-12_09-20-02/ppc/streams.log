@@ -1,0 +1,18 @@
+[0.326s] Invoking command in '/home/test_ppc/ppc/build/ppc': PYTHONPATH=/home/test_ppc/ppc/build/ppc/prefix_override:/home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/test_ppc/ppc/build/ppc/build --no-deps install_data
+[0.414s] running develop
+[0.450s] running egg_info
+[0.451s] writing ppc.egg-info/PKG-INFO
+[0.451s] writing dependency_links to ppc.egg-info/dependency_links.txt
+[0.451s] writing entry points to ppc.egg-info/entry_points.txt
+[0.451s] writing requirements to ppc.egg-info/requires.txt
+[0.451s] writing top-level names to ppc.egg-info/top_level.txt
+[0.466s] reading manifest file 'ppc.egg-info/SOURCES.txt'
+[0.466s] writing manifest file 'ppc.egg-info/SOURCES.txt'
+[0.482s] running build_ext
+[0.482s] Creating /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/site.py
+[0.483s] Creating /home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc.egg-link (link to .)
+[0.484s] Installing simple_sub script to /home/test_ppc/ppc/install/ppc/lib/ppc
+[0.484s] 
+[0.484s] Installed /home/test_ppc/ppc/build/ppc
+[0.484s] running install_data
+[0.498s] Invoked command in '/home/test_ppc/ppc/build/ppc' returned '0': PYTHONPATH=/home/test_ppc/ppc/build/ppc/prefix_override:/home/test_ppc/ppc/install/ppc/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/test_ppc/ppc/build/ppc/build --no-deps install_data

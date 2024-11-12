@@ -1,9 +1,10 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Imu, JointState, LaserScan
+from std_msgs.msg import Float32
 
 from .naive_state_estimator import NaiveStateEstimator
-
+import time
 class SimpleSub(Node):
     def __init__(self):
         super().__init__('simple_sub')
@@ -25,10 +26,10 @@ class SimpleSub(Node):
                                 'effort':0 }
                                 }
         self.lidar = {}
-
+        self.vtrue = 0
 
         #create timer callback to run general processig of sensor data
-        self.create_timer(timer_period_sec=0.03,
+        self.create_timer(timer_period_sec=0.05,
                       callback= self.pushToProcess)
 
         #create sensor subscribers
@@ -57,20 +58,32 @@ class SimpleSub(Node):
             qos_profile=10,
             callback=self.lidar_callback
         )
-
+        
+        self.right_encoder_subscriber = self.create_subscription(
+            msg_type=Float32,
+            topic='/autodrive/f1tenth_1/speed',
+            qos_profile=10,
+            callback=self.speed_callback
+        )
 
     def pushToProcess(self):
         self.nse.imu = self.imu
         self.nse.lidar = self.lidar
         self.nse.encoder = self.encoder
-        print(self.imu.keys())
+        self.nse.vtrue = self.vtrue
+        #print(self.imu.keys())
+        
 
-        if len(self.imu.keys())>1: self.nse.velocity_from_imu()
-        self.get_logger().info(f'velocity from imu: {self.nse.vx_k_imu}')
+        if len(self.imu.keys())>1: 
+            self.nse.position_from_encoder()
+        self.get_logger().info(f'velocity from imu: {self.nse.x,self.nse.y, self.vtrue}')
 
 
 
 
+    def speed_callback(self, msg):
+        self.vtrue = msg.data
+        
 
     
 

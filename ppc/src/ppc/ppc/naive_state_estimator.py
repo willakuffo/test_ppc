@@ -58,32 +58,25 @@ class NaiveStateEstimator():
         #assign prev acceleration as current for next time step
         self.vx_k_1_imu = self.vx_k_imu 
     
-
-
     def position_from_encoder(self):
         '''velocity of center of left and right ecooder axis'''
-        left_enc_counts = self.encoder['left_encoder']['position']
-        right_enc_counts = self.encoder['right_encoder']['position']
+        left_enc_counts = self.encoder['left_encoder']['position'][0]
+        right_enc_counts = self.encoder['right_encoder']['position'][0]
 
 
-        distance_per_count = f1tenth_params['wheel_radius']/\
-                                f1tenth_params['encoder_pulses_per_rev']
             
-        left_enc_distance = left_enc_counts*distance_per_count
+        left_enc_distance = (left_enc_counts/\
+                        f1tenth_params['encoder_pulses_per_rev'])*2*np.pi\
+                            *f1tenth_params['wheel_radius']
 
-        right_enc_distance = right_enc_counts*distance_per_count
+        right_enc_distance = (right_enc_counts/\
+                        f1tenth_params['encoder_pulses_per_rev'])*2*np.pi\
+                            *f1tenth_params['wheel_radius']
+
 
         avg_d = (right_enc_distance+left_enc_distance)/2
+        self.x = avg_d
 
-        dtheta = (right_enc_distance+left_enc_distance)/f1tenth_params['track_width']
-
-
-        self.x = self.xold + avg_d*np.cos(self.theta + dtheta/2)
-        self.y = self.yold + avg_d*np.sin(self.theta + dtheta/2)
-
-        self.xold = self.x
-        self.yold = self.y
-        self.theta = self.theta_old + dtheta
         
 
     def position_from_imu(self):

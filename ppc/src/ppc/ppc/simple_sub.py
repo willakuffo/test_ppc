@@ -4,6 +4,7 @@ from sensor_msgs.msg import Imu, JointState, LaserScan
 from std_msgs.msg import Float32
 
 from .naive_state_estimator import NaiveStateEstimator
+from .lidar_processor import lidarProcessor
 import time
 class SimpleSub(Node):
     def __init__(self):
@@ -12,6 +13,7 @@ class SimpleSub(Node):
 
         #naive estimator
         self.nse = NaiveStateEstimator()
+        self.lidar_processor = lidarProcessor()
 
         #create sensor data structs
 
@@ -68,15 +70,19 @@ class SimpleSub(Node):
 
     def pushToProcess(self):
         self.nse.imu = self.imu
-        self.nse.lidar = self.lidar
+        self.lidar_processor.lidar = self.lidar
         self.nse.encoder = self.encoder
         self.nse.vtrue = self.vtrue
         #print(self.imu.keys())
-        
-
-        if len(self.imu.keys())>1: 
+        self.lidar_processor.process_lidar()
+        print(self.lidar)
+        self.get_logger().info(f'Lidar Angle max: {self.lidar_processor.lidar_angle_max}')
+        self.get_logger().info(f'Lidar Angle min: {self.lidar_processor.lidar_angle_min}')
+        self.get_logger().info(f'Lidar Angle increment: {self.lidar_processor.lidar_angle_increment}')
+        self.get_logger().info(f'Lidar Angle ranges: {self.lidar_processor.lidar_ranges}')
+        """if len(self.imu.keys())>1: 
             self.nse.position_from_encoder()
-        self.get_logger().info(f'velocity from imu: {self.nse.x,self.nse.y, self.vtrue}')
+        self.get_logger().info(f'velocity from imu: {self.nse.x,self.nse.y, self.vtrue}')"""
 
 
 

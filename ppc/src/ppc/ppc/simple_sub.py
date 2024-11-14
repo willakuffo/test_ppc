@@ -1,6 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Imu, JointState, LaserScan
+from geometry_msgs.msg import Point
 from std_msgs.msg import Float32
 
 from .naive_state_estimator import NaiveStateEstimator
@@ -28,6 +29,7 @@ class SimpleSub(Node):
                                 'effort':0 }
                                 }
         self.lidar = {}
+        self.ips = {}
         self.vtrue = 0
 
         #create timer callback to run general processig of sensor data
@@ -68,18 +70,30 @@ class SimpleSub(Node):
             callback=self.speed_callback
         )
 
+        self.ips_subscriber = self.create_subscription(
+            msg_type=Point,
+            topic='/autodrive/f1tenth_1/ips',
+            qos_profile=10,
+            callback=self.ips_callback
+        )
+
     def pushToProcess(self):
         self.nse.imu = self.imu
         self.lidar_processor.lidar = self.lidar
+        self.lidar_processor.ips = self.ips
         self.nse.encoder = self.encoder
         self.nse.vtrue = self.vtrue
         #print(self.imu.keys())
         self.lidar_processor.process_lidar()
-        print(self.lidar)
+        #print(self.lidar)
         self.get_logger().info(f'Lidar Angle max: {self.lidar_processor.lidar_angle_max}')
         self.get_logger().info(f'Lidar Angle min: {self.lidar_processor.lidar_angle_min}')
         self.get_logger().info(f'Lidar Angle increment: {self.lidar_processor.lidar_angle_increment}')
         self.get_logger().info(f'Lidar Angle ranges: {self.lidar_processor.lidar_ranges}')
+
+        self.get_logger().info(f'ips x: {self.lidar_processor.ips_x}')
+        self.get_logger().info(f'ips y: {self.lidar_processor.ips_y}')
+        self.get_logger().info(f'ips z: {self.lidar_processor.ips_z}')
         """if len(self.imu.keys())>1: 
             self.nse.position_from_encoder()
         self.get_logger().info(f'velocity from imu: {self.nse.x,self.nse.y, self.vtrue}')"""
@@ -137,6 +151,11 @@ class SimpleSub(Node):
                         'range_max' : msg.range_max,
                         'ranges' : msg.ranges,
                         'intensities' : msg.intensities}
+    
+    def ips_callback(self, msg):
+        self.ips = {'x' : msg.x,
+                    'y' : msg.y,
+                    'z' : msg.z}
     
     
 

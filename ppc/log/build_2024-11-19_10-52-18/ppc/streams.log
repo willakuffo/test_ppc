@@ -1,0 +1,17 @@
+[0.264s] Invoking command in '/home/f1tenth/test_ppc/ppc/build/ppc': PYTHONPATH=/home/f1tenth/test_ppc/ppc/build/ppc/prefix_override:/home/f1tenth/test_ppc/ppc/install/ppc/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/f1tenth/test_ppc/ppc/build/ppc/build --no-deps install_data
+[0.358s] running develop
+[0.396s] running egg_info
+[0.396s] writing ppc.egg-info/PKG-INFO
+[0.396s] writing dependency_links to ppc.egg-info/dependency_links.txt
+[0.396s] writing entry points to ppc.egg-info/entry_points.txt
+[0.396s] writing requirements to ppc.egg-info/requires.txt
+[0.396s] writing top-level names to ppc.egg-info/top_level.txt
+[0.410s] reading manifest file 'ppc.egg-info/SOURCES.txt'
+[0.410s] writing manifest file 'ppc.egg-info/SOURCES.txt'
+[0.424s] running build_ext
+[0.425s] Creating /home/f1tenth/test_ppc/ppc/install/ppc/lib/python3.8/site-packages/ppc.egg-link (link to .)
+[0.425s] Installing simple_sub script to /home/f1tenth/test_ppc/ppc/install/ppc/lib/ppc
+[0.425s] 
+[0.425s] Installed /home/f1tenth/test_ppc/ppc/build/ppc
+[0.425s] running install_data
+[0.437s] Invoked command in '/home/f1tenth/test_ppc/ppc/build/ppc' returned '0': PYTHONPATH=/home/f1tenth/test_ppc/ppc/build/ppc/prefix_override:/home/f1tenth/test_ppc/ppc/install/ppc/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/f1tenth/test_ppc/ppc/build/ppc/build --no-deps install_data

@@ -80,12 +80,19 @@ class SimpleSub(Node):
     def pushToProcess(self):
         self.nse.imu = self.imu
         self.lidar_processor.lidar = self.lidar
+        self.lidar
         self.lidar_processor.ips = self.ips
         self.nse.encoder = self.encoder
         self.nse.vtrue = self.vtrue
-        #print(self.imu.keys())
-        self.lidar_processor.process_lidar()
+        print(self.imu.keys())
+
+        if len(self.imu.keys())>1:
+            #self.lidar_processor.process_lidar()
+            vals = self.nse.quaternion_to_euler([self.imu["orientation"]["x"], self.imu["orientation"]["y"], self.imu["orientation"]["z"], self.imu["orientation"]["w"]])
+            
+            print(vals)
         #print(self.lidar)
+        """
         self.get_logger().info(f'Lidar Angle max: {self.lidar_processor.lidar_angle_max}')
         self.get_logger().info(f'Lidar Angle min: {self.lidar_processor.lidar_angle_min}')
         self.get_logger().info(f'Lidar Angle increment: {self.lidar_processor.lidar_angle_increment}')
@@ -93,7 +100,7 @@ class SimpleSub(Node):
 
         self.get_logger().info(f'ips x: {self.lidar_processor.ips_x}')
         self.get_logger().info(f'ips y: {self.lidar_processor.ips_y}')
-        self.get_logger().info(f'ips z: {self.lidar_processor.ips_z}')
+        self.get_logger().info(f'ips z: {self.lidar_processor.ips_z}')"""
         """if len(self.imu.keys())>1: 
             self.nse.position_from_encoder()
         self.get_logger().info(f'velocity from imu: {self.nse.x,self.nse.y, self.vtrue}')"""

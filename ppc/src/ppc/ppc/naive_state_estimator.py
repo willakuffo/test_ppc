@@ -31,9 +31,9 @@ class NaiveStateEstimator():
 
 
     def quaternion_to_euler(self,q):
-        w, x, y, z = q
+        x, y, z, w = q
         # Yaw (ψ)
-        yaw = np.arctan2(2*(w*z + x*y), 1 - 2*(x**2 + y**2))
+        yaw = 2 * np.arctan(2*(w*z + x*y) / 1 - 2*(x**2 + y**2))
         
         # Pitch (θ)
         pitch = np.arcsin(2*(w*y - z*x))

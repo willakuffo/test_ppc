@@ -33,7 +33,7 @@ class SimpleSub(Node):
         self.vtrue = 0
 
         #create timer callback to run general processig of sensor data
-        self.create_timer(timer_period_sec=0.05,
+        self.create_timer(timer_period_sec=0.03,
                       callback= self.pushToProcess)
 
         #create sensor subscribers
@@ -84,13 +84,14 @@ class SimpleSub(Node):
         self.lidar_processor.ips = self.ips
         self.nse.encoder = self.encoder
         self.nse.vtrue = self.vtrue
-        print(self.imu.keys())
+        #print(self.imu.keys())
 
         if len(self.imu.keys())>1:
             #self.lidar_processor.process_lidar()
             vals = self.nse.quaternion_to_euler([self.imu["orientation"]["x"], self.imu["orientation"]["y"], self.imu["orientation"]["z"], self.imu["orientation"]["w"]])
-            
-            print(vals)
+            cur_orientation = self.nse.orientation_z()
+            self.get_logger().info(f"Orientation about z-axis: {cur_orientation, vals[2]}")
+            #print(vals)
         #print(self.lidar)
         """
         self.get_logger().info(f'Lidar Angle max: {self.lidar_processor.lidar_angle_max}')

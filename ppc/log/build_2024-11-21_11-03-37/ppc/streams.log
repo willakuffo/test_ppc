@@ -1,0 +1,21 @@
+[0.243s] Invoking command in '/home/workspace/test_ppc/ppc/build/ppc': PYTHONPATH=/home/workspace/test_ppc/ppc/build/ppc/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/workspace/test_ppc/ppc/install/ppc/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/workspace/test_ppc/ppc/build/ppc/build --no-deps symlink_data
+[0.339s] /usr/lib/python3/dist-packages/setuptools/dist.py:723: UserWarning: Usage of dash-separated 'script-dir' will not be supported in future versions. Please use the underscore name 'script_dir' instead
+[0.339s]   warnings.warn(
+[0.354s] running develop
+[0.355s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[0.355s]   warnings.warn(
+[0.408s] running egg_info
+[0.408s] writing ppc.egg-info/PKG-INFO
+[0.408s] writing dependency_links to ppc.egg-info/dependency_links.txt
+[0.408s] writing entry points to ppc.egg-info/entry_points.txt
+[0.408s] writing requirements to ppc.egg-info/requires.txt
+[0.408s] writing top-level names to ppc.egg-info/top_level.txt
+[0.409s] reading manifest file 'ppc.egg-info/SOURCES.txt'
+[0.409s] writing manifest file 'ppc.egg-info/SOURCES.txt'
+[0.410s] running build_ext
+[0.410s] Creating /home/workspace/test_ppc/ppc/install/ppc/lib/python3.10/site-packages/ppc.egg-link (link to .)
+[0.410s] Installing simple_sub script to /home/workspace/test_ppc/ppc/install/ppc/lib/ppc
+[0.410s] 
+[0.410s] Installed /home/workspace/test_ppc/ppc/build/ppc
+[0.410s] running symlink_data
+[0.423s] Invoked command in '/home/workspace/test_ppc/ppc/build/ppc' returned '0': PYTHONPATH=/home/workspace/test_ppc/ppc/build/ppc/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/workspace/test_ppc/ppc/install/ppc/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/workspace/test_ppc/ppc/build/ppc/build --no-deps symlink_data

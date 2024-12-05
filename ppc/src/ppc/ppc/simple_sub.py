@@ -3,7 +3,7 @@ from rclpy.node import Node
 from sensor_msgs.msg import Imu, JointState, LaserScan
 from geometry_msgs.msg import Point
 from std_msgs.msg import Float32
-
+import pickle
 from .naive_state_estimator import NaiveStateEstimator
 from .lidar_processor import lidarProcessor
 import time
@@ -31,6 +31,9 @@ class SimpleSub(Node):
         self.lidar = {}
         self.ips = {}
         self.vtrue = 0
+
+
+        self.world_lidar_track_bounds = []
 
         #create timer callback to run general processig of sensor data
         self.create_timer(timer_period_sec=0.03,
@@ -80,20 +83,29 @@ class SimpleSub(Node):
     def pushToProcess(self):
         self.nse.imu = self.imu
         self.lidar_processor.lidar = self.lidar
-        self.lidar
+        #self.lidar
         self.lidar_processor.ips = self.ips
         self.nse.encoder = self.encoder
         self.nse.vtrue = self.vtrue
         #print(self.imu.keys())
 
-        if len(self.imu.keys())>1:
-            #self.lidar_processor.process_lidar()
-            vals = self.nse.quaternion_to_euler([self.imu["orientation"]["x"], self.imu["orientation"]["y"], self.imu["orientation"]["z"], self.imu["orientation"]["w"]])
-            cur_orientation = self.nse.orientation_z()
-            self.get_logger().info(f"Orientation about z-axis: {cur_orientation, vals[2]}")
+
+
+        if len(self.lidar.keys())>1:
+
+            vals = self.nse.q2e([self.imu["orientation"]["x"], self.imu["orientation"]["y"], self.imu["orientation"]["z"], self.imu["orientation"]["w"]])
+            self.lidar_processor.cur_orientation_z = self.nse.get_yaw()
+            world_track_bounds = self.lidar_processor.process_lidar()
+            self.world_lidar_track_bounds.append(world_track_bounds)
+            
+            #self.get_logger().info(f"Orientation about z-axis: {cur_orientation, vals[2]}")
             #print(vals)
-        #print(self.lidar)
-        """
+            #print(self.lidar)
+            #z = self.nse.get_yaw()
+            #self.get_logger().info(f'q2e::{vals[0],self.nse.cur_orientation_z,z}')
+      
+
+            """
         self.get_logger().info(f'Lidar Angle max: {self.lidar_processor.lidar_angle_max}')
         self.get_logger().info(f'Lidar Angle min: {self.lidar_processor.lidar_angle_min}')
         self.get_logger().info(f'Lidar Angle increment: {self.lidar_processor.lidar_angle_increment}')
@@ -165,15 +177,25 @@ class SimpleSub(Node):
                     'y' : msg.y,
                     'z' : msg.z}
     
-    
+    def on_shutdown(self):
+        trackfle = open("track_points_r",'wb')
+        pickle.dump(self.world_lidar_track_bounds, trackfle)
+        trackfle.close()
+        print('track points saved')
+
 
 
 def main(args = None):
     rclpy.init(args=args)
     node = SimpleSub()
-    rclpy.spin(node)
-    node.destroy_node()
-    rclpy.shutdown()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        node.on_shutdown()
+    
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 import numpy as np
 from .racecar_params import f1tenth_params
-import math
+from scipy.spatial.transform import Rotation
 
 class NaiveStateEstimator():
     def __init__(self):
@@ -26,8 +26,13 @@ class NaiveStateEstimator():
         self.vx_k_imu = 0
         self.vx_k_1_imu = 0
 
-        self.prev_orientation = 0
+        self.prev_orientation =  -np.pi / 2 # initial orientation of the car's frame with respect to the world frame
         self.cur_orientation_z = 0
+
+    def q2e(self,q):
+        euler = Rotation.from_quat(q).as_euler('zxy')
+        euler = np.mod(euler, 2*np.pi)
+        return euler
 
     def quaternion_to_euler(self,q):
         x, y, z, w = q
@@ -42,8 +47,75 @@ class NaiveStateEstimator():
         
         return roll, pitch, yaw
     
+    def get_yaw(self):
+        #self.orientation_from_ang_velocity()
+        theta_imu = self.q2e([self.imu["orientation"]["x"], self.imu["orientation"]["y"], self.imu["orientation"]["z"], self.imu["orientation"]["w"]])[0] - np.pi # this is done to offset the orientation to begin at 0 radians
+
+        """
+        print(euler_2pi)
+        theta_imu = euler_get_yaw[0]
+        
+        theta_imu_yaw = 0
+        deviation = 0
+
+        threshold = 2 * np.pi/180 # 5 degrees is used as threshold
+        #print('ttt::',theta_imu)
+         #wrap yaw from 0 to 2pi
+
+        #self.cur_orientation_z = self.cur_orientation_z % 2*np.pi if self.cur_orientation_z >0 else self.cur_orientation_z % -2*np.pi
+        # lhp - between 0 and pi theta imu = +ve
+        if ((self.cur_orientation_z > 0) and (self.cur_orientation_z <= np.pi)):
+            theta_imu_yaw = theta_imu + 0
+            deviation = np.abs(self.cur_orientation_z - theta_imu)
+            print("Q1", theta_imu, self.cur_orientation_z)
+
+            if (deviation > threshold):
+                self.cur_orientation_z = theta_imu_yaw
+                print("Updated in Q1")
+
+
+        # rhp - theta imu = -ve
+        if ((self.cur_orientation_z > np.pi) and (self.cur_orientation_z <= 2*np.pi)):
+            theta_imu_yaw = theta_imu + np.pi + np.pi
+            deviation = np.abs(self.cur_orientation_z - theta_imu_yaw)
+            print("Q2", theta_imu, self.cur_orientation_z)
+
+            if (deviation > threshold):
+                self.cur_orientation_z = theta_imu_yaw
+                print("Updated in Q2")
+
+        #-ve orientation clockwise
+        # theta_imu -ve
+        if ((self.cur_orientation_z < 0) and (self.cur_orientation_z >= -np.pi)):
+            theta_imu_yaw = theta_imu + 0
+            deviation = np.abs(self.cur_orientation_z - theta_imu_yaw)
+            print("Q1 -ve", theta_imu, self.cur_orientation_z)
+
+            if (deviation > threshold):
+                self.cur_orientation_z = theta_imu_yaw
+                print("Updated in Q1 -ve")
+
+
+        # crossed theta_imu = +ve
+        if ((self.cur_orientation_z < -np.pi) and (self.cur_orientation_z >= -2*np.pi)):
+            theta_imu_yaw = theta_imu - np.pi - np.pi
+            deviation = np.abs(self.cur_orientation_z - theta_imu_yaw)
+            print("Q2 -ve", theta_imu, self.cur_orientation_z)
+
+            if (deviation > threshold):
+                self.cur_orientation_z = theta_imu_yaw
+                print("Updated in Q2 -ve")
+        
+        self.prev_orientation = self.cur_orientation_z
+        print(theta_imu, theta_imu_yaw, deviation)
+        """
+
+        print(theta_imu)
+        self.cur_orientation_z = theta_imu
+        return self.cur_orientation_z
+
     def orientation_z(self):
-        self.orientation_from_ang_velocity()
+        #self.orientation_from_ang_velocity()
         theta_imu = self.quaternion_to_euler([self.imu["orientation"]["x"], self.imu["orientation"]["y"], self.imu["orientation"]["z"], self.imu["orientation"]["w"]])[2]
 
         
